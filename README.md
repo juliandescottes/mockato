@@ -2,9 +2,9 @@ Mockato - mocking in Aria Templates
 =====================
 
 Mockato is a mocking library, shamelessly inspired by Mockito.
-It was designed during a train trip to help me write tests for Aria Templates.
+It was designed to help me write tests for Aria Templates.
 However looking back now I'm not sure that this kind of mocking is really extremely helpful in JavaScript.
-The API is too heavily linked to Java and doesn't really take advantage of the dynamic nature of JavaScript.
+The API is too heavily linked to Java and doesn't really take advantage of the dynamic nature of JS.
 
 Warning - The current version is actually not compatible with Aria Templates. 
 It was developped for a custom version of Aria Templates, and needs to be adapted.
