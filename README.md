@@ -27,11 +27,41 @@ Below is a sample from a setup method a test case written for a simple game engi
     var engine = new this.$GameEngine(context, mockedTimer);
 
 My GameEngine happens to be very careful about what kind of arguments you pass to its constructor and would have exploded if it didn't get a proper Timer instance. With the mock, it's just fine !
+
+In more details :
+    Aria.interfaceDefinition({
+        $classpath : 'ConfigurationReader',
+        $interface : {
+            getValue : function (paramName) {},
+            hasParameter : function (paramName) {}
+        }
+    });
+    
+    Aria.classDefinition({
+        $classpath : 'HelloWorld',
+        $prototype : {
+            sayHello : function (to) {
+                return "Hello " + to;
+            }
+        }
+    });
+    
+In your test : 
+
+    setUp : function () {
+        var mockedConfigReader = mockato.Mockato.mock('ConfigurationReader');
+        mockedConfigReader.getValue("someParam"); // null
+        mockedConfigReader.hasParameter("someParam"); // null
+        mockedConfigReader.unknownMethod(); // ERROR
+        
+        var mockedHelloWorld = mockato.Mockato.mock('HelloWorld');
+        aria.utils.Type.isInstanceOf(mockedHelloWorld, 'HelloWorld'); // true
+    }
 When
 ---------------------
 If you want to add some default behaviour to your mock, use `mockato.Mockato.when` on an existing mock.
 
-    var mockedConfigReader = mockato.Mockato.mock('games.common.ConfigurationReader');
+    var mockedConfigReader = mockato.Mockato.mock('ConfigurationReader');
     mockato.Mockato.when(mockedConfigReader).getValue().thenReturn(42);
     // when calling mockedConfigReader.getValue() then return 42
     mockedConfigReader.getValue(); // 42
@@ -46,13 +76,26 @@ As in Mockito, the arguments you use when calling the method on the wrapper are 
     mockedConfigReader.getValue(); // 42
     
 In the example above the configReader is configured to return 42 when called with no argument. But actually this config reader is supposed to be always called with one argument, the name of the config parameter to evaluate.
-If the mock was supposed to always return 42, you should actually use Matchers.
+If the mock was supposed to always return 42, you should use Matchers.
 
     mockato.Mockato.when(mockedConfigReader).getValue(mockato.Matchers.ANY).thenReturn(42);
     mockedConfigReader.getValue("some random argument"); // 42
+    
+There are 3 behaviours available : 
+* thenReturn(value) : returns the provided value
+* thenAnswer(method) : apply the provided method to the mock
+* thenThrow(errorMessage) : throw an error
+
+    mockato.Mockato.when(mockedConfigReader).
+        getValue(mockato.Matchers.ANY).thenAnswer(function(paramName) {return paramName + ":value"});
+    mockedConfigReader.getValue("myParam"); // "myParamValue"
+    
+    mockato.Mockato.when(mockedConfigReader).getValue().thenThrow('getValue should not be called without argument');
 
 Verify
 ---------------------
+
+
 
 Matchers
 ---------------------
