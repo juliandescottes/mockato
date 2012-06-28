@@ -29,6 +29,7 @@ Below is a sample from a setup method a test case written for a simple game engi
 My GameEngine happens to be very careful about what kind of arguments you pass to its constructor and would have exploded if it didn't get a proper Timer instance. With the mock, it's just fine !
 
 In more details :
+
     Aria.interfaceDefinition({
         $classpath : 'ConfigurationReader',
         $interface : {
@@ -94,8 +95,33 @@ There are 3 behaviours available :
 
 Verify
 ---------------------
+A mock is automatically spied on by Mockato. It will log all the method calls that happened on this mock. 
+So you can check if your mock was called as you expected, using `mockato.Mockato.verify`.
 
+The syntax is very close to the one used for `when`.
+
+    // check that the client never attempted to retrieve a forbidden parameter
+    mockato.Mockato.verify(mockedConfigReader).getValue("forbiddenParam").wasNeverCalled();
+    // check it called getValue at least once with the argument 'mandatoryParam'
+    mockato.Mockato.verify(mockedConfigReader).getValue("mandatoryParam").wasCalled();
+    // check that getValue was called at least 3 times with any parameter (you can use Matchers here as well)
+    mockato.Mockato.verify(mockedConfigReader).getValue(mockato.Matchers.ANY).atLeast(3);
+
+Verify, similarly to `when`, depends on the arguments list you provide to the method (here getValue). The verification is based on the list of calls to the method made with the exact sme arguments list.
+
+The full list of verifiers is :
+* times(numberOfTimes) : check the method was called exactly numberOfTimes
+* once() : equivalent to times(1), check it was called exactly once
+* never() : equivalent to times(0)
+* atLeast(numberOfTimes) : called numberOfTimes or more
+* atMost(numberOfTimes) : called numberOfTimes or less
+* atLeastOnce() : equivalent to atLeast(1)
+* wasCalled : equivalent to atLeastOnce()
+* wasNeverCalled : equivalent to never()
 
 
 Matchers
 ---------------------
+To be used with `when` or `verify` : 
+* mockato.Matchers.ANY : can represent any argument
+* mockato.Matchers.ANYALL : to use only once in a signature. Will match any possible signature
