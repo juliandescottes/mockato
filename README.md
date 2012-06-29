@@ -110,18 +110,18 @@ The syntax is very close to the one used for `when`.
 Verify, similarly to `when`, depends on the arguments list you provide to the method (here getValue). The verification is based on the list of calls to the method made with the exact sme arguments list.
 
 The full list of verifiers is :
-* times(numberOfTimes) : check the method was called exactly numberOfTimes
-* once() : equivalent to times(1), check it was called exactly once
-* never() : equivalent to times(0)
-* atLeast(numberOfTimes) : called numberOfTimes or more
-* atMost(numberOfTimes) : called numberOfTimes or less
-* atLeastOnce() : equivalent to atLeast(1)
-* wasCalled : equivalent to atLeastOnce()
-* wasNeverCalled : equivalent to never()
+* **times(numberOfTimes)** : check the method was called exactly numberOfTimes
+* **once()** : equivalent to times(1), check it was called exactly once
+* **never()** : equivalent to times(0)
+* **atLeast(numberOfTimes)** : called numberOfTimes or more
+* **atMost(numberOfTimes)** : called numberOfTimes or less
+* **atLeastOnce()** : equivalent to atLeast(1)
+* **wasCalled()** : equivalent to atLeastOnce()
+* **wasNeverCalled()** : equivalent to never()
 
 
 Matchers
 ---------------------
 To be used with `when` or `verify` : 
-* mockato.Matchers.ANY : can represent any argument
-* mockato.Matchers.ANYALL : to use only once in a signature. Will match any possible signature
+* **mockato.Matchers.ANY** : can represent any argument
+* **mockato.Matchers.ANYALL** : to use only once in a signature. Will match any possible signature
