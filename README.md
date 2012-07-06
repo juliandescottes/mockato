@@ -87,12 +87,16 @@ There are 3 behaviours available :
 * thenAnswer(method) : apply the provided method to the mock
 * thenThrow(errorMessage) : throw an error
 
-    mockato.Mockato.when(mockedConfigReader).
-        getValue(mockato.Matchers.ANY).thenAnswer(function(paramName) {return paramName + ":value"});
-    mockedConfigReader.getValue("myParam"); // "myParamValue"
-    
-    mockato.Mockato.when(mockedConfigReader).getValue().thenThrow('getValue should not be called without argument');
+Example :
 
+    mockato.Mockato.when(mockedConfigReader).getValue(mockato.Matchers.ANY).thenAnswer(
+        function(paramName) {
+            return paramName + ":value"
+        }
+    );
+    mockedConfigReader.getValue("myParam"); // "myParamValue"
+    mockato.Mockato.when(mockedConfigReader).getValue().thenThrow('getValue should not be called without argument');
+    
 Verify
 ---------------------
 A mock is automatically spied on by Mockato. It will log all the method calls that happened on this mock. 
