@@ -15,4 +15,4 @@ Aria.testDefinition({
 			this.assertNotEquals(this.EXPECTED_RETURN_VALUE, mock.basicMethod(this.ANOTHER_ARG));
 		}
 	} 
-})
+});

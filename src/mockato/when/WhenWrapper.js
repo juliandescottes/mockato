@@ -7,19 +7,19 @@ Aria.classDefinition({
 	},
 	$prototype : {
 		thenReturn : function (returnValue) {
-			var stub = function () {return returnValue};
+			var stub = function () {return returnValue;};
 			mockato.StubStore.store(this.__mock, this.__methodName, this.__args, stub);
 		},
 
 		thenThrow : function (errorMessage) {
-			var stub = function () {throw new Error(errorMessage)};
+			var stub = function () {throw new Error(errorMessage);};
 			mockato.StubStore.store(this.__mock, this.__methodName, this.__args, stub);
 		},
 
 		thenAnswer : function (method) {
 			var mock = this.__mock;
-			var stub = function () {return method.apply(mock, arguments)};
+			var stub = function () {return method.apply(mock, arguments);};
 			mockato.StubStore.store(this.__mock, this.__methodName, this.__args, stub);
 		}
 	}
-})
+});

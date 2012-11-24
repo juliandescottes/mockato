@@ -1,9 +1,7 @@
 Aria.classDefinition({
 	$classpath : 'mockato.mock.ClassMockBuilder',
-	$extends : 'games.common.BaseObject',
 	$dependencies : ['mockato.mock.MockedClassDefinitionBuilder', 'aria.utils.Json'],
 	$constructor : function (classRef) {
-		this.$BaseObject.constructor.call(this);
 		this.__classRef = classRef;
 	},
 	$prototype : {		
@@ -11,7 +9,7 @@ Aria.classDefinition({
 			var classpath = this.__classRef.classDefinition.$classpath,
 				methods = this.__getClassMethods(this.__classRef);
 
-			var mockClassDef = new this.$MockedClassDefinitionBuilder(classpath, methods).build();
+			var mockClassDef = new mockato.mock.MockedClassDefinitionBuilder(classpath, methods).build();
 			mockClassDef.$extends = classpath;
 			return this.__defineClassAndGetInstance(mockClassDef);
 		},
@@ -19,7 +17,7 @@ Aria.classDefinition({
 		__getClassMethods : function (classObject) {
 			var methods = classObject.classDefinition.$prototype;
 			if (classObject.superclass) {
-				this.$Json.inject(this.__getClassMethods(classObject.superclass.constructor), methods);
+				aria.utils.Json.inject(this.__getClassMethods(classObject.superclass.constructor), methods);
 			}
 			return methods;
 		},

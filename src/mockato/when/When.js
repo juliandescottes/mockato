@@ -1,6 +1,6 @@
 Aria.classDefinition({
 	$classpath : 'mockato.when.When',
-	$dependencies : ['mockato.when.WhenWrapper'],
+	$dependencies : ['mockato.when.WhenWrapper', 'aria.utils.Type'],
 	$constructor : function (mock) {
 		for (var i in mock) {
 			if (aria.utils.Type.isFunction(mock[i])){
@@ -12,7 +12,7 @@ Aria.classDefinition({
 		_createWrappedMethod : function (methodName, mock) {
 			return function() {
 				return new mockato.when.WhenWrapper(methodName, mock, arguments);
-			}
+			};
 		}
 	}
 });
