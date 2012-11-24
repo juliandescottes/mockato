@@ -21,7 +21,7 @@ Aria.testDefinition({
 			var classpath = this.CLASSPATH, 
 				methods = {'myMethod' : true};
 			var mockedDef = new mockato.mock.MockedClassDefinitionBuilder(classpath, methods).build();
-			this.assertTrue(aria.utils.Type.isFunction(mockedDef.$prototype['myMethod']));
+			this.assertTrue(aria.utils.Type.isFunction(mockedDef.$prototype.myMethod));
 		},
 
 		__assertInstanciationFailsForArgs : function (classpath, methods) {

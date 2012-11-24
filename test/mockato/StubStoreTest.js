@@ -15,4 +15,4 @@ Aria.testDefinition({
 			this.assertTrue(typeof retrievedStub != "undefined" && retrievedStub !== null);	
 		}
 	}
-})
+});

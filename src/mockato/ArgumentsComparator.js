@@ -10,7 +10,7 @@ Aria.classDefinition({
 			if (expected.length == actual.length) {
 				return this.__compareSameSizeArgumentsLists(expected, actual);	
 			} else {
-				return false
+				return false;
 			}
 		},
 
@@ -32,4 +32,4 @@ Aria.classDefinition({
 		}
 	},
 	$constructor : function () {}
-})
+});

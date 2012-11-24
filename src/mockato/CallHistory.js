@@ -3,11 +3,11 @@ Aria.classDefinition({
 	$dependencies : ['mockato.ArgumentsComparator'],
 	$statics : {
 		store : function (mock, method, args) {
-			var args = this.__stripTrailingUndefinedArgs(args);
+			args = this.__stripTrailingUndefinedArgs(args);
 			this.__getCallHistory(mock, method).push({
 				args : args,
 				time : Date.now()
-			})
+			});
 		},
 		get : function (mock, method, args) {
 			var calls =  this.__getCallHistory(mock, method);
@@ -24,7 +24,7 @@ Aria.classDefinition({
 			if (!mock[method+"_____calls"]) {
 				mock[method+"_____calls"] = [];
 			}
-			return mock[method+"_____calls"]
+			return mock[method+"_____calls"];
 		},
 
 		__stripTrailingUndefinedArgs : function (args) {

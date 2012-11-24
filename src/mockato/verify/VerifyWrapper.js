@@ -7,7 +7,7 @@ Aria.classDefinition({
 	},
 	$prototype : {
 		once : function () {
-			return this.times(1)
+			return this.times(1);
 		},
 		
 		times : function (times) {
@@ -35,7 +35,7 @@ Aria.classDefinition({
 		
 		never : function () {
 			var calls = mockato.CallHistory.get(this.__mock, this.__methodName, this.__args);
-			if (calls.length != 0) {
+			if (calls.length !== 0) {
 				throw new Error('Mock was called (expected not called).');
 			}
 		},

@@ -20,8 +20,8 @@ Aria.classDefinition({
 			if (!mock[methodName+"_____stubs"]) {
 				mock[methodName+"_____stubs"] = [];
 			}
-			return mock[methodName+"_____stubs"]
+			return mock[methodName+"_____stubs"];
 		}
 	},
 	$constructor : function () {}	
-})
+});
