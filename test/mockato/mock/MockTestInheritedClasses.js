@@ -1,6 +1,7 @@
-Aria.testDefinition({
+Aria.classDefinition({
 	$classpath : 'mockato.mock.MockTestInheritedClasses',
-	$dependencies : ['mockato.ClassAChild'],
+	$extends : 'aria.jsunit.TestCase',
+	$dependencies : ['mockato.ClassAChild', 'mockato.mock.Mock'],
 	$prototype :  {
 		setUp : function () {
 			this.__childClassMock = new mockato.mock.Mock('mockato.ClassAChild');

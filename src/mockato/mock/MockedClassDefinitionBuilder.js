@@ -1,6 +1,6 @@
 Aria.classDefinition({
     $classpath : 'mockato.mock.MockedClassDefinitionBuilder',
-    $dependencies : ['aria.utils.Type'],
+    $dependencies : ['aria.utils.Type', 'mockato.StubStore', 'mockato.CallHistory'],
     $constructor : function (classpath, methods) {
         if (aria.utils.Type.isString(classpath) && aria.utils.Type.isObject(methods)) {
             this.__classpath = classpath;

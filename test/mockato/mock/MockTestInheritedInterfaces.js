@@ -1,6 +1,7 @@
-Aria.testDefinition({
+Aria.classDefinition({
 	$classpath : 'mockato.mock.MockTestInheritedInterfaces',
-	$dependencies : ['mockato.InterfaceAChild'],
+	$extends : 'aria.jsunit.TestCase',
+	$dependencies : ['mockato.InterfaceAChild', 'mockato.mock.Mock'],
 	$prototype :  {
 		setUp : function () {
 			this.__childInterfaceMock = new mockato.mock.Mock('mockato.InterfaceAChild');

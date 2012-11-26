@@ -1,6 +1,7 @@
-Aria.testDefinition({
+Aria.classDefinition({
 	$classpath : 'mockato.verify.VerifyTest',
-	$dependencies : ['mockato.ClassA','mockato.mock.Mock'],
+	$extends : 'aria.jsunit.TestCase',
+	$dependencies : ['mockato.ClassA','mockato.mock.Mock', 'mockato.verify.Verify'],
 	$prototype : {
 		setUp : function () {
 			this.__mock = new mockato.mock.Mock('mockato.ClassA');

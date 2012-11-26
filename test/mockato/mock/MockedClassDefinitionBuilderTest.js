@@ -1,5 +1,7 @@
-Aria.testDefinition({
+Aria.classDefinition({
 	$classpath : 'mockato.mock.MockedClassDefinitionBuilderTest',
+	$extends : 'aria.jsunit.TestCase',
+	$dependencies : ['mockato.mock.MockedClassDefinitionBuilder'],
 	$statics : {
 		CLASSPATH : "fake.Classpath"	
 	},

@@ -1,6 +1,6 @@
-Aria.testDefinition({
+Aria.classDefinition({
 	$classpath : 'mockato.StubStoreTest',
-	$dependencies : ['mockato.Mockato', 'mockato.ClassA'],
+	$dependencies : ['mockato.Mockato', 'mockato.ClassA', 'mockato.StubStore'],
 	$statics : {
 		METHOD_NAME : "methodName",
 		ARG_SET_1 : ["arg"]
